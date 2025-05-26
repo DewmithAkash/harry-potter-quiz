@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Harry Potter Quiz - Which House & Wizard Are You?</title>
+<style>
+  body {
+    font-family: 'Georgia', serif;
+    background: url('https://i.imgur.com/Amrch7k.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f5f0e6;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    transition: background-image 1s ease-in-out;
+  }
+  h1, h2 {
+    text-align: center;
+    color: #d4af37;
+    text-shadow: 0 0 5px #000;
+  }
+  .hidden {
+    display: none;
+  }
+  #nameInputSection, .question {
+    background: rgba(43, 43, 43, 0.85);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+  }
+  label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  input[type="radio"] {
+    margin-right: 12px;
+    transform: scale(1.2);
+    vertical-align: middle;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.3rem;
+    border-radius: 6px;
+    border: none;
+    box-sizing: border-box;
+  }
+  button {
+    background: #d4af37;
+    color: #1a1a1a;
+    font-weight: bold;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 20px auto;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+  button:hover, button:focus {
+    background: #b28c1c;
+    outline: none;
+  }
+  .result {
+    background: rgba(43, 43, 43, 0.85);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+  .house-name {
+    font-size: 2.4rem;
+    color: #d4af37;
+    margin-top: 0.2em;
+  }
+  .wizard-type {
+    font-size: 1.7rem;
+    margin-top: 10px;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    body {
+      padding: 15px;
+    }
+    label {
+      font-size: 1rem;
+    }
+    button {
+      font-size: 1rem;
+      padding: 12px 25px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Which Hogwarts House and What Kind of Wizard Are You? 🧙‍♂️✨</h1>
+
+<!-- Name input section -->
+<div id="nameInputSection">
+  <p>Please enter your name to begin the quiz:</p>
+  <input type="text" id="participantName" placeholder="Enter your name here" />
+  <button id="startQuizBtn">Start Quiz</button>
+</div>
+
+<!-- Quiz form -->
+<form id="quizForm" class="hidden" aria-label="Harry Potter personality quiz">
+
+  <!-- Question 1 -->
+  <div class="question">
+    <p><strong>1. When you meet a challenge, you:</strong></p>
+    <label><input type="radio" name="q1" value="A" required>🦁🔥 Charge bravely into battle with roaring courage</label>
+    <label><input type="radio" name="q1" value="B">🦅🧠 Think smart and plan carefully like a wise eagle</label>
+    <label><input type="radio" name="q1" value="C">🦡🤗 Support your friends and stay loyal through thick and thin</label>
+    <label><input type="radio" name="q1" value="D">🐍🎭 Use clever tricks to get ahead, always one step ahead</label>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question">
+    <p><strong>2. Your favorite magical subject is:</strong></p>
+    <label><input type="radio" name="q2" value="A" required>⚔️✨ Defense Against the Dark Arts — fight the darkness!</label>
+    <label><input type="radio" name="q2" value="B">📚🔮 Charms or Transfiguration — magic that changes the world</label>
+    <label><input type="radio" name="q2" value="C">🌿🦄 Care of Magical Creatures or Herbology — nurture the magical life</label>
+    <label><input type="radio" name="q2" value="D">🧪💀 Potions or Dark Arts — mysterious and powerful magic</label>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question">
+    <p><strong>3. Which magical creature would you want as a pet?</strong></p>
+    <label><input type="radio" name="q3" value="A" required>🦅🔥 Phoenix — rebirth and fiery spirit</label>
+    <label><input type="radio" name="q3" value="B">🦡💰 Niffler — mischievous treasure hunter</label>
+    <label><input type="radio" name="q3" value="C">🦁🦄 Hippogriff — proud and noble friend</label>
+    <label><input type="radio" name="q3" value="D">🐍🐉 Basilisk — rare and powerful serpent</label>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="question">
+    <p><strong>4. Your ideal magical tool is:</strong></p>
+    <label><input type="radio" name="q4" value="A" required>🪄⚡ A wand full of powerful spells and lightning-fast magic</label>
+    <label><input type="radio" name="q4" value="B">📖✨ A spellbook of ancient knowledge and secrets</label>
+    <label><input type="radio" name="q4" value="C">💉🌸 Healing potions and herbs — magic to soothe and mend</label>
+    <label><input type="radio" name="q4" value="D">🧙‍♂️🖤 A set of dark potions and mysterious ingredients</label>
+  </div>
+
+  <!-- Question 5 -->
+  <div class="question">
+    <p><strong>5. How do you spend your free time?</strong></p>
+    <label><input type="radio" name="q5" value="A" required>🏹🔥 Practicing dueling spells to hone your power</label>
+    <label><input type="radio" name="q5" value="B">🤓📖 Reading magical research books, hungry for wisdom</label>
+    <label><input type="radio" name="q5" value="C">🤝💛 Helping friends and magical creatures with kindness</label>
+    <label><input type="radio" name="q5" value="D">🎯🕵️‍♂️ Planning your next big move with strategy and patience</label>
+  </div>
+
+  <!-- Question 6 -->
+  <div class="question">
+    <p><strong>6. Which Hogwarts ghost do you feel closest to?</strong></p>
+    <label><input type="radio" name="q6" value="A" required>Nearly Headless Nick 🦴🎩 — noble and brave</label>
+    <label><input type="radio" name="q6" value="B">The Grey Lady 👻🌫️ — mysterious and wise</label>
+    <label><input type="radio" name="q6" value="C">The Fat Friar 🍖🎉 — cheerful and kind-hearted</label>
+    <label><input type="radio" name="q6" value="D">The Bloody Baron 🔥🗡️ — powerful and solemn</label>
+  </div>
+
+  <!-- Question 7 -->
+  <div class="question">
+    <p><strong>7. Your Patronus would be:</strong></p>
+    <label><input type="radio" name="q7" value="A" required>🦌🌟 Stag — graceful protector</label>
+    <label><input type="radio" name="q7" value="B">🦉📜 Owl — wise and watchful</label>
+    <label><input type="radio" name="q7" value="C">🦡🌿 Badger — steadfast and loyal</label>
+    <label><input type="radio" name="q7" value="D">🐍🌙 Snake — clever and cunning</label>
+  </div>
+
+  <!-- Question 8 -->
+  <div class="question">
+    <p><strong>8. Choose a magical snack:</strong></p>
+    <label><input type="radio" name="q8" value="A" required>🍬✨ Bertie Bott’s Every Flavor Beans — a surprise in every bite!</label>
+    <label><input type="radio" name="q8" value="B">🍫🐸 Chocolate Frogs — sweet and collectible</label>
+    <label><input type="radio" name="q8" value="C">🥧🎃 Pumpkin Pasties — warm and comforting</label>
+    <label><input type="radio" name="q8" value="D">🥨🧙‍♂️ Cauldron Cakes — magical and delicious</label>
+  </div>
+
+  <!-- Question 9 -->
+  <div class="question">
+    <p><strong>9. How do you solve problems?</strong></p>
+    <label><input type="radio" name="q9" value="A" required>💥🔥 Take bold action immediately, fearless and fierce</label>
+    <label><input type="radio" name="q9" value="B">🧠🕯️ Think it through carefully, logic leads the way</label>
+    <label><input type="radio" name="q9" value="C">❤️🤗 Ask for help from friends — together you’re stronger</label>
+    <label><input type="radio" name="q9" value="D">🎭🕸️ Use strategy and cunning, always three steps ahead</label>
+  </div>
+
+  <!-- Question 10 -->
+  <div class="question">
+    <p><strong>10. What kind of wizard are you?</strong></p>
+    <label><input type="radio" name="q10" value="A" required>⚔️🦁 Duelist — brave and fierce in battle</label>
+    <label><input type="radio" name="q10" value="B">📚🦅 Scholar — wise and curious seeker of knowledge</label>
+    <label><input type="radio" name="q10" value="C">💖🦡 Healer — kind and caring with a gentle touch</label>
+    <label><input type="radio" name="q10" value="D">🐍🎯 Strategist — clever and ambitious planner</label>
+  </div>
+
+  <!-- Question 11 -->
+  <div class="question">
+    <p><strong>11. Your favorite Hogwarts location is:</strong></p>
+    <label><input type="radio" name="q11" value="A" required>🏰🔥 The Gryffindor Common Room — warm and lively</label>
+    <label><input type="radio" name="q11" value="B">📚🌟 The Ravenclaw Tower — calm and studious</label>
+    <label><input type="radio" name="q11" value="C">🌿🛋️ The Hufflepuff Basement — cozy and welcoming</label>
+    <label><input type="radio" name="q11" value="D">🕸️🐍 The Slytherin Dungeon — mysterious and intriguing</label>
+  </div>
+
+ <!-- [START OF FILE OMITTED FOR BREVITY – everything up to Question 12 stays the same] -->
+
+  <!-- Question 12 -->
+  <div class="question">
+    <p><strong>12. Choose a magical phrase that resonates with you:</strong></p>
+    <label><input type="radio" name="q12" value="A" required>“Courage will bring you home.”</label>
+    <label><input type="radio" name="q12" value="B">“Knowledge is the key to power.”</label>
+    <label><input type="radio" name="q12" value="C">“Friendship and loyalty conquer all.”</label>
+    <label><input type="radio" name="q12" value="D">“Ambition shapes destiny.”</label>
+  </div>
+
+  <!-- Question 13 -->
+  <div class="question">
+    <p><strong>13. What is your relationship with Akash?</strong></p>
+    <label><input type="radio" name="q13" value="A" required>💫 Akash's closest one — You share a deep, personal bond with Akash.</label>
+    <label><input type="radio" name="q13" value="B">🤝 Best friend — You’re one of Akash’s top friends and share a strong friendship.</label>
+    <label><input type="radio" name="q13" value="C">😊 Friend — You know Akash and have a friendly, casual connection.</label>
+    <label><input type="radio" name="q13" value="D">👋 Just met — You recently got to know Akash or are still getting to know him.</label>
+  </div>
+
+  <button type="submit">Reveal My Hogwarts House & Wizard Type!</button>
+</form>
+
+<!-- Results area -->
+<div id="results" class="hidden"></div>
+
+<script>
+  // Background URLs for each screen
+  const backgrounds = {
+    nameInput: "https://i.imgur.com/Amrch7k.jpeg",
+    quizScreen: "https://i.imgur.com/1BO93OE.jpeg",
+    resultsScreen: "https://i.imgur.com/zkRBn33.jpeg"
+  };
+
+  const startBtn = document.getElementById('startQuizBtn');
+  const participantNameInput = document.getElementById('participantName');
+  const nameInputSection = document.getElementById('nameInputSection');
+  const quizForm = document.getElementById('quizForm');
+  const resultsDiv = document.getElementById('results');
+
+  // House mapping
+  const houseNames = {
+    A: "Gryffindor 🦁",
+    B: "Ravenclaw 🦅",
+    C: "Hufflepuff 🦡",
+    D: "Slytherin 🐍"
+  };
+
+  // Wizard types mapping
+  const wizardTypes = {
+    A: "The Bold Duelist ⚔️",
+    B: "The Wise Scholar 📚",
+    C: "The Kind Healer 💖",
+    D: "The Clever Strategist 🎯"
+  };
+
+  // Set initial background for the name input screen on page load
+  document.body.style.backgroundImage = `url('${backgrounds.nameInput}')`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+
+  // Start Quiz button click handler
+  startBtn.addEventListener('click', () => {
+    const name = participantNameInput.value.trim();
+    if (!name) {
+      alert("Please enter your name to start the quiz.");
+      participantNameInput.focus();
+      return;
+    }
+    // Hide name input, show quiz
+    nameInputSection.classList.add('hidden');
+    quizForm.classList.remove('hidden');
+
+    // Change background to quiz screen
+    document.body.style.backgroundImage = `url('${backgrounds.quizScreen}')`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+  });
+
+  // Quiz form submission handler
+  quizForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(quizForm);
+
+    // Count house points
+    let houseScores = { A: 0, B: 0, C: 0, D: 0 };
+
+    // Wizard type answer from question 10
+    let wizardTypeAnswer = formData.get('q10');
+
+    // Tally house points from questions except q10
+    for (let i = 1; i <= 12; i++) {
+      if (i === 10) continue;
+      const ans = formData.get(`q${i}`);
+      if (ans && houseScores.hasOwnProperty(ans)) {
+        houseScores[ans]++;
+      }
+    }
+
+    // Find the house with max points
+    let topHouse = 'A';
+    let maxPoints = 0;
+    for (const house in houseScores) {
+      if (houseScores[house] > maxPoints) {
+        maxPoints = houseScores[house];
+        topHouse = house;
+      }
+    }
+
+    // Change background to results screen
+    document.body.style.backgroundImage = `url('${backgrounds.resultsScreen}')`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+    // Display the results
+    const participantName = participantNameInput.value.trim();
+    resultsDiv.innerHTML = `
+      <div class="result" role="region" aria-live="polite" aria-label="Quiz results">
+        <h2>Congratulations, ${participantName}!</h2>
+        <p>Your Hogwarts House is:</p>
+        <p class="house-name">${houseNames[topHouse]}</p>
+        <p>Your wizard type is:</p>
+        <p class="wizard-type">${wizardTypes[wizardTypeAnswer]}</p>
+        <hr />
+        <p>Thank you for taking the quiz! Feel free to play again.</p>
+      </div>
+    `;
+
+    quizForm.classList.add('hidden');
+    resultsDiv.classList.remove('hidden');
+    resultsDiv.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
